@@ -90,7 +90,7 @@
 			qcom,ibatsafe-ma = <1500>;
 			qcom,thermal-mitigation = <1500 700 600 325>;
 			qcom,resume-soc = <99>;
-			qcom,maxinput-usb-ma = <1200>;
+			qcom,maxinput-usb-ma = <1100>;
 			qcom,tchg-mins = <150>;
 			qcom,chg-vadc = <&pm8226_vadc>;
 			qcom,chg-adc_tm = <&pm8226_adc_tm>;
@@ -101,6 +101,7 @@
 			qcom,cool-bat-decidegc = <100>;
 			qcom,cool-bat-mv = <4350>;
 			qcom,ibatmax-cool-ma = <500>;
+			qcom,ext-ovp-present;
 
 			qcom,chgr@1000 {
 				status = "disabled";
