@@ -1007,10 +1007,6 @@ static bool hw_imx135_otp_match_module(void)
 ***************************************************************************/
 static int hw_imx135_match_module(struct msm_sensor_ctrl_t *s_ctrl)
 {
-    struct v4l2_subdev *subdev_act[MAX_ACTUATOR_NUMBER] = {NULL};
-    struct msm_actuator_ctrl_t *a_ctrl = NULL;
-    int i=0;
-
     if(!hw_imx135_otp_match_module())
     {
         pr_err("%s: Check OTP module info failed\n", __func__);
@@ -1031,18 +1027,6 @@ static int hw_imx135_match_module(struct msm_sensor_ctrl_t *s_ctrl)
     }
 
     app_info_set("camera_main", "hw_imx135_liteon");
-       if(!strncmp(s_ctrl->sensordata->sensor_info->sensor_project_name, "23060094FA-IMX-L", MAX_SENSOR_NAME))
-       {
-               /*if it's sunny module, we need to get the actuator ctrl to change af parameter to index 4*/
-               msm_sd_get_actdev(subdev_act);
-               for(i=0; i<MAX_ACTUATOR_NUMBER; i++)
-               {
-                       if(NULL != subdev_act[i])
-                               a_ctrl =  subdev_act[i]->dev_priv;
-                       if(NULL != a_ctrl)
-                               a_ctrl->cam_name = MSM_ACTUATOR_MAIN_CAM_7;
-               }
-       }
 
     pr_info("%s: sensor_name=%s, sensor_project_name=%s\n",  __func__,
             s_ctrl->sensordata->sensor_name, s_ctrl->sensordata->sensor_info->sensor_project_name);
