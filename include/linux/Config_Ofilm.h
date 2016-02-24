@@ -1776,7 +1776,7 @@ static const uint8_t cyttsp4_Mate2_ofilm_param_regs[] = {
 	0xFC, 0x07,  /* CONFIG_DATA_SIZE */
 	0xFC, 0x07,  /* CONFIG_DATA_MAX_SIZE */
 	0x4C, 0x00, 0x00, 0x00,  /* SDK_CTRL_CFG_SIZE */
-	0x30, 0x00,  /* CONFIG_VER */
+	0x31, 0x00,  /* CONFIG_VER */
 	0x28, 0x1E,  /* X_LEN_PHY */
 	0x52, 0x35,  /* Y_LEN_PHY */
 	0x01,  /* PANELID_ENABLE */
@@ -1879,7 +1879,7 @@ static const uint8_t cyttsp4_Mate2_ofilm_param_regs[] = {
 	0x0A,  /* EASYWAKEUP_VERTICAL_SLIDE_LENGTH */
 	0x02,  /* EASYWAKEUP_VERTICAL_SLIDE_SPACE_MIN */
 	0x08,  /* EASYWAKEUP_VERTICAL_SLIDE_SPACE_MAX */
-	0x1C,  /* EASYWAKEUP_SELF_FILTER_COEFF */
+	0x09,  /* EASYWAKEUP_SELF_FILTER_COEFF */
 	0x01,  /* EASYWAKEUP_ENABLE */
 	0x14,  /* PROX_BL_SS_SLOW_THOLD */
 	0x08,  /* PROX_BL_SS_SLOW_SPEED_SHIFTER */
