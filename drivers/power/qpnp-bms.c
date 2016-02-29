@@ -824,7 +824,7 @@ extern int hw_get_prop_batt_status( void);
 static int get_battery_status(struct qpnp_bms_chip *chip)
 {
 	union power_supply_propval ret = {0,};
-	int rc;
+	int rc = 0;
 
 	if (chip->batt_psy == NULL)
 		chip->batt_psy = power_supply_get_by_name("battery");
