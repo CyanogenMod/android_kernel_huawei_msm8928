@@ -5322,47 +5322,9 @@ qpnp_chg_load_battery_data(struct qpnp_chg_chip *chip)
 				&batt_data, result.physical);
 		if (rc) {
 			pr_err("failed to read battery data: %d\n", rc);
-#ifdef CONFIG_HUAWEI_KERNEL
-			batt_data = palladium_1500_data;
-#else
 			return rc;
-#endif
 		}
 
-#ifdef CONFIG_HUAWEI_KERNEL
-		if ((chip->cool_bat_decidegc || chip->warm_bat_decidegc) && (batt_data.warm_bat_decidegc || batt_data.cool_bat_decidegc))
-		{
-			chip->warm_bat_decidegc = batt_data.warm_bat_decidegc;
-			chip->warm_bat_chg_ma = batt_data.warm_bat_chg_ma;
-			chip->warm_bat_mv = batt_data.warm_bat_mv;
-
-			chip->cool_bat_decidegc = batt_data.cool_bat_decidegc;
-			chip->cool_bat_chg_ma = batt_data.cool_bat_chg_ma;
-			chip->cool_bat_mv = batt_data.cool_bat_mv;
-
-			chip->hot_bat_decidegc = batt_data.hot_bat_decidegc;
-			chip->cold_bat_decidegc = batt_data.cold_bat_decidegc;
-
-			pr_info("use special temp-cv parameter\n");
-		}
-
-		pr_info("warm_bat_decidegc=%d "
-				"warm_bat_chg_ma=%d "
-				"warm_bat_mv=%d "
-				"cool_bat_decidegc=%d "
-				"cool_bat_chg_ma=%d "
-				"cool_bat_mv=%d "
-				"hot_bat_decidegc=%d "
-				"cold_bat_decidegc=%d \n",
-				 chip->warm_bat_decidegc,
-				 chip->warm_bat_chg_ma,
-				 chip->warm_bat_mv,
-				 chip->cool_bat_decidegc,
-				 chip->cool_bat_chg_ma,
-				 chip->cool_bat_mv,
-				 chip->hot_bat_decidegc,
-				 chip->cold_bat_decidegc);
-#endif
 		if (batt_data.max_voltage_uv >= 0) {
 			chip->max_voltage_mv = batt_data.max_voltage_uv / 1000;
 			chip->safe_voltage_mv = chip->max_voltage_mv
